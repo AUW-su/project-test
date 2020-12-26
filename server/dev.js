@@ -8,7 +8,7 @@ const server = http.createServer();
 
 
 
-server.listen(port, '0.0.0.0', () => {
+server.listen(port, () => {
     console.log(`服务器正在端口号${port}上运行`);
     // console.log(path.dirname())
 });

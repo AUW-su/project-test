@@ -7,6 +7,7 @@
         <span class="time-unit small-space">{{ countTime.seconds | time }}{{ hasMillisecond ? `.${countTime.millisecond}` : '' }}</span>
     </div>
 </template>
+
 <script>
 /*
 1.beforeTex，倒计时之前的文案

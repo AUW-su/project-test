@@ -1,17 +1,18 @@
 #!/bin/sh
 
+git checkout master
+
+git fetch
+
+git pull
 
 fulltime=`date +%Y%m%d%H%m%s`
 
 # echo ${fulltime}
 
-#你的本地分支名称，分支名就是用的就是创建分之的时间
+#你的本地分支名称，分支名就是用的就是创建分支的时间
 
 feature=$fulltime
-
-#git url 地址
-
-giturl='https://github.com/AUW-su/project-test.git'
 
 #从master新建本地分支
 

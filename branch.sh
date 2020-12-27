@@ -37,4 +37,4 @@ git branch --set-upstream-to=origin/"$feature"
 
 git branch -vv
 
-echo "OK, you can write code"
+echo "OK, you can write code ..."

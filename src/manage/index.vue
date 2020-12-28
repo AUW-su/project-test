@@ -108,7 +108,7 @@ export default {
             });
         },
         production() {
-            console.log('111')
+            console.log('production')
         },
     }
 }

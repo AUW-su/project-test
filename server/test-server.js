@@ -19,13 +19,18 @@ app.use((req, res, next) => {
 const doShell = (cmd) => {
     let str = cmd;
     let result = {};
+    console.log('doShell')
     return new Promise((resolve, reject) => {
         execFile(str, (err, stdout, stderr) => {
             if (err) {
+                console.log('stderr')
+                console.log(stderr)
                 result.errCode = 500;
                 result.err = stderr;
                 reject(result);
             } else {
+                console.log('stdout')
+                console.log(stdout)
                 result.errCode = 200;
                 result.data = stdout;
                 resolve(result);
@@ -79,9 +84,12 @@ app.post('/test', bodyParser.json(), (req, res, next) => {
 });
 
 app.post('/staging', bodyParser.json(), (req, res, next) => {
+    console.log('staging 222')
     res.status(200);
-    let sh = path.resolve(__dirname, '../staging.sh');
-    
+    // let sh = path.resolve(__dirname, '../staging.sh');
+    let sh = path.resolve(__dirname, '../test.sh');
+    console.log('staging-sh-test')
+    console.log(sh)
     doShell(sh).then((res1) => {
         // res.send('hello world');
         res.json(res1);

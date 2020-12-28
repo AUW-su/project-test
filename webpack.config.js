@@ -6,16 +6,20 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     mode: "production", // "production" | "development" | "none"
-    entry: "./src/index.js", // string | object | array
+    // entry: "./src/index.js", // string | object | array
+    entry: {
+        home: './src/home/home.js',
+        manage: './src/manage/manage.js'
+    },
     // 默认为 ./src
     // 这里应用程序开始执行
     // webpack 开始打包
     output: {
       // webpack 如何输出结果的相关选项
-      path:path.resolve(__dirname, "dist"), // string (default)
-      // 所有输出文件的目标路径
-      // 必须是绝对路径（使用 Node.js 的 path 模块）
-      filename: "bundle.js", // string (default)
+      // 输出的路径
+      path: path.resolve(__dirname, "dist"), // string (default)
+      // 输出的文件名称
+      filename: "[name].js", // string (default)
     },
     module: {
         // 模块配置相关

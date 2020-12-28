@@ -76,7 +76,36 @@ export default {
             });
         },
         staging() {
-            console.log('111')
+            console.log('staging')
+
+            const ajax = new AjaxClient();
+            const data = {
+                message: "hello"
+            }
+        
+            ajax.postAsync({
+                url: 'http://localhost:9999/staging', //Endpoint
+                headers: {
+                    'X-Original-Header1': 'header-value-1', //Additional Headers
+                    'X-Original-Header2': 'header-value-2',
+                },
+                contentType: 'application/json; charset = UTF-8', //content-type of sending data
+                data: JSON.stringify(data), //text data
+                dataType: 'json', //data type to parse when receiving response from server
+                timeoutMillis: 10000, //timeout milli-seconds
+                success: response => {
+                    console.log('success')
+                    console.log(response);
+                },
+                error: e => {
+                    console.log('error')
+                    console.error(e);
+                },
+                timeout: e => {
+                    console.log('timeout')
+                    console.error(e);
+                }
+            });
         },
         production() {
             console.log('111')

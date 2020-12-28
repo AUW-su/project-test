@@ -78,6 +78,19 @@ app.post('/test', bodyParser.json(), (req, res, next) => {
     });
 });
 
+app.post('/staging', bodyParser.json(), (req, res, next) => {
+    res.status(200);
+    let sh = path.resolve(__dirname, '../staging.sh');
+    
+    doShell(sh).then((res1) => {
+        // res.send('hello world');
+        res.json(res1);
+    }).catch((err) => {
+        res.json({
+            error: err
+        });
+    });
+});
 app.post('/api', bodyParser.json(), (req, res, next) => {
     res.status(200);
     const data = req.body;

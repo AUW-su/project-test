@@ -50,4 +50,6 @@ cp -R $path/src $path2/staging/project-test/
 #重启预发服务（9081）
 pm2 reload staging
 
-echo "预发发布完毕"
+echo "预发布完成"
+
+echo $(date +"%Y-%m-%d %H:%M:%S") "预发布完成" >> $path/test.log

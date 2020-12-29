@@ -23,15 +23,15 @@ ${NPM} install --registry https://registry.npm.taobao.org
 # # ${NPM} run eslint
 ${NPM} run build
 
-# GIT_STATUS=`git status`
-# echo ${GIT_STATUS};
+GIT_STATUS=`git status`
+echo ${GIT_STATUS};
 
-# # 判断时候有需要提交的文件的文件
-# if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
-#     echo "没有可提交的内容";
-# else
-#     git add ./dist
-#     # git add ./manifest.json
-#     git commit --no-verify -m "auto commit build_files";
-#     git push
-# fi
+# 判断时候有需要提交的文件的文件
+if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
+    echo "没有可提交的内容";
+else
+    git add ./dist
+    # git add ./manifest.json
+    git commit --no-verify -m "auto commit build_files";
+    git push
+fi

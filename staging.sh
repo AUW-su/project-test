@@ -30,7 +30,7 @@ echo ${GIT_STATUS};
 if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
     echo "没有可提交的内容";
 else
-    git add ./dist
+    git add $path/dist
     # git add ./manifest.json
     git commit --no-verify -m "auto commit build_files";
     git push

@@ -35,3 +35,8 @@ else
     git commit --no-verify -m "auto commit build_files";
     git push
 fi
+
+#重启预发服务（9081）
+pm2 reload staging
+
+echo "预发服务完毕"

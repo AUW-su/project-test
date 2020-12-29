@@ -1,7 +1,9 @@
 #!/bin/sh
 
-export NODE_OPTIONS="--max-old-space-size=4096"
+# export NODE_OPTIONS="--max-old-space-size=4096"
 set -e
+
+git pull
 
 # #获取当前执行脚本路径
 dir=`pwd`
@@ -12,7 +14,7 @@ path=$(dirname "$dir")
 rm -rf $path/node_modules
 
 export NODE_VERSION=10.15.0
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+# export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 
 . ~/.nvm/nvm.sh
 

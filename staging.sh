@@ -1,23 +1,27 @@
 #!/bin/sh
 
-# export NODE_OPTIONS="--max-old-space-size=4096"
-# set -e
-# rm -rf ./node_modules
-# echo "It is a test"
-echo "hello world"
+export NODE_OPTIONS="--max-old-space-size=4096"
+set -e
 
+#获取当前执行脚本路径
+dir=`pwd`
 
-# export NODE_VERSION=10.15.0
-# # export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+#上一级目录
+path=$(dirname "$dir")
 
-# # . ~/.nvm/nvm.sh
+rm -rf $path/node_modules
 
-# nvm install ${NODE_VERSION}
-# NPM="nvm exec 10.15.0 npm"
+export NODE_VERSION=10.15.0
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 
-# ${NPM} install --registry https://registry.npm.taobao.org
+. ~/.nvm/nvm.sh
+
+nvm install ${NODE_VERSION}
+NPM="nvm exec 10.15.0 npm"
+
+${NPM} install --registry https://registry.npm.taobao.org
 # # ${NPM} run eslint
-# ${NPM} run build
+${NPM} run build
 
 # GIT_STATUS=`git status`
 # echo ${GIT_STATUS};

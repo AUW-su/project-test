@@ -92,7 +92,7 @@ export default {
                 contentType: 'application/json; charset = UTF-8', //content-type of sending data
                 data: JSON.stringify(data), //text data
                 dataType: 'json', //data type to parse when receiving response from server
-                timeoutMillis: 10000, //timeout milli-seconds
+                // timeoutMillis: 10000, //timeout milli-seconds
                 success: response => {
                     console.log('success')
                     console.log(response);
@@ -101,10 +101,10 @@ export default {
                     console.log('error')
                     console.error(e);
                 },
-                timeout: e => {
-                    console.log('timeout')
-                    console.error(e);
-                }
+                // timeout: e => {
+                //     console.log('timeout')
+                //     console.error(e);
+                // }
             });
         },
         production() {

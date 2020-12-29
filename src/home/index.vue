@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <div class="text">test</div>
+        <div class="text">123456</div>
         <div class="text">距离<span class="notice">分享结束</span>还有：</div> 
         <count-down :countDownTime="time"></count-down>
     </div>

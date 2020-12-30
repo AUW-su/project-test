@@ -95,7 +95,7 @@ export default {
                 }
             
                 ajax.postAsync({
-                    url: 'http://112.124.201.59:9999/test', //Endpoint
+                    url: 'http://112.124.201.59:9999/staging', //Endpoint
                     // url: 'http://localhost:9999/staging', //Endpoint
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
@@ -129,7 +129,7 @@ export default {
             
                 ajax.postAsync({
                     // url: 'http://localhost:9999/production', //Endpoint
-                    url: 'http://112.124.201.59:9999/test', //Endpoint
+                    url: 'http://112.124.201.59:9999/production', //Endpoint
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
                         'X-Original-Header2': 'header-value-2',

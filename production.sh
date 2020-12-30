@@ -23,6 +23,11 @@ cp -R $path2/staging/project-test $path2/production/
 
 echo $(date +"%Y-%m-%d %H:%M:%S") "正式发布完成" >> $path/test.log
 
+# 提交日志文件
+git add $path/test.log
+git commit --no-verify -m "auto commit logs";
+git push
+
 # #合并分支
 branch=$(git symbolic-ref --short -q HEAD)
 echo $branch

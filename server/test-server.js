@@ -70,19 +70,17 @@ app.get('/create', (req, res, next) => {
 });
 app.post('/test', bodyParser.json(), (req, res, next) => {
     res.status(200);
-    res.send('hello world');
-    // let sh = path.resolve(__dirname, '../create-branch.sh');
+    let sh = path.resolve(__dirname, '../create-branch.sh');
     
-    // doShell(sh).then((res1) => {
-    //     // res.send('hello world');
-    //     res.json(res1);
-    // }).catch((err) => {
-    //     console.log('2222')
-    //     console.log(err)
-    //     res.json({
-    //         error: err
-    //     });
-    // });
+    doShell(sh).then((res1) => {
+        // res.send('hello world');
+        res.json(res1);
+    }).catch((err) => {
+        console.log(err)
+        res.json({
+            error: err
+        });
+    });
 });
 
 app.post('/staging', bodyParser.json(), (req, res, next) => {

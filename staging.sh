@@ -50,7 +50,7 @@ cp -R $path/dist $path2/staging/project-test/
 cp -R $path/src $path2/staging/project-test/
 
 #重启预发服务（9081）
-pm2 reload staging
+# pm2 reload staging
 
 echo "预发布完成"
 

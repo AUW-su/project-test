@@ -1,8 +1,12 @@
 <template>
     <div class="wrapper">
-        <div class="text">22222</div>
         <div class="text">距离<span class="notice">分享结束</span>还有：</div> 
         <count-down :countDownTime="time"></count-down>
+
+        <!-- <div class="text">1111</div> -->
+        <div class="cont">
+            <div class="text">新年快乐～</div>
+        </div>
     </div>
 </template>
 <script>
@@ -30,5 +34,8 @@ export default {
 }
 .notice {
     color: #e31436;
+}
+.cont {
+    margin-top: 20px;
 }
 </style>

@@ -73,7 +73,7 @@ export default {
                         console.log(response);
                     },
                     error: e => {
-                        this.ableCreateBranch = false;
+                        this.ableCreateBranch = true;
                         console.log('error')
                         console.error(e);
                     },
@@ -119,7 +119,6 @@ export default {
         production() {
             console.log('production')
             if (this.ableProduction) {
-
                 this.ableProduction = false;
                 const ajax = new AjaxClient();
                 const data = {

@@ -97,6 +97,7 @@ app.post('/staging', bodyParser.json(), (req, res, next) => {
 app.post('/production', bodyParser.json(), (req, res, next) => {
     res.status(200);
     let sh = path.resolve(__dirname, '../production.sh');
+    // let sh = path.resolve(__dirname, '../test.sh');
     doShell(sh).then((res1) => {
         res.json(res1);
     }).catch((err) => {

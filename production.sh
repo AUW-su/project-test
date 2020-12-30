@@ -9,7 +9,7 @@ dir=`pwd`
 # #上一级目录
 path=$(dirname "$dir")
 
-# #复制需要的文件到staging（预发）文件夹下
+# 拷贝需要的文件到线上服务
 path1=$(dirname "$path")
 # echo $path1
 
@@ -42,3 +42,14 @@ git push
 
 echo "合并主干完成"
 
+# 健康检查
+sleep 10
+# 测试网页返回值 在脚本中，这是很常见的测试网站是否正常的用法
+STATUS=`curl -o /dev/null -s -w %{http_code} http://127.0.0.1` 
+if [ $STATUS -eq 200 ]; then
+    echo 'deployed successed'
+    exit 0
+else
+    echo 'health check failed'
+    exit 1
+fi

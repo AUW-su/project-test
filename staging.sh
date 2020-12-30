@@ -34,12 +34,11 @@ if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
 else
     git add $path/dist
     git add $path/test.log
-    # git add ./manifest.json
     git commit --no-verify -m "auto commit build_files";
     git push
 fi
 
-#复制需要的文件到staging（预发）文件夹下
+# 拷贝需要的文件到预发服务
 path1=$(dirname "$path")
 # echo $path1
 
@@ -56,3 +55,15 @@ cp -R $path/src $path2/staging/project-test/
 echo "预发布完成"
 
 echo $(date +"%Y-%m-%d %H:%M:%S") "预发布完成" >> $path/test.log
+
+# 健康检查
+sleep 10
+# 测试网页返回值 在脚本中，这是很常见的测试网站是否正常的用法
+STATUS=`curl -o /dev/null -s -w %{http_code} http://127.0.0.1` 
+if [ $STATUS -eq 200 ]; then
+    echo 'deployed successed'
+    exit 0
+else
+    echo 'health check failed'
+    exit 1
+fi

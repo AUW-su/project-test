@@ -37,4 +37,3 @@ git push
 
 echo "合并主干完成"
 
-echo $(date +"%Y-%m-%d %H:%M:%S") "合并主干完成" >> $path/test.log

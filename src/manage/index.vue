@@ -2,7 +2,6 @@
     <div class="wrapper">
         <div class="creat-branch">
             <div class="btn" @click="createBranch">创建git分支</div>
-            <!-- <input class="branch" type="text" v-model="branchName" placeholder="分支名"> -->
         </div>
         
         <div class="btn btn-1" @click="staging">预发布</div>
@@ -25,31 +24,6 @@ export default {
         createBranch() {
             console.log('createBranch')
 
-            // const client = new AjaxClient();
-    
-            // client.ajax({
-            //     type: 'get',
-            //     url: 'http://localhost:9999/create',
-            //     headers: {
-            //         'X-Original-Header1': 'header-value-1', //Additional Headers
-            //         'X-Original-Header2': 'header-value-2',
-            //     },
-            //     contentType: 'application/json; charset = UTF-8',
-            //     dataType: 'text', //data type to parse when receiving response from server
-            //     timeoutMillis: 10000, //timeout milli-seconds
-            //     success: (response, xhr) => {
-            //          console.log('success')
-            //          console.log(response)
-            //     },
-            //     error: (e, xhr) => {
-            //         console.log('error')
-            //         console.error(e);
-            //     },
-            //     timeout: (e, xhr) => {
-            //         console.log('timeout')
-            //         console.error(e);
-            //     }
-            // });
             if (this.ableCreateBranch) {
                 this.ableCreateBranch = false;
                 const ajax = new AjaxClient();
@@ -58,8 +32,8 @@ export default {
                 }
             
                 ajax.postAsync({
-                    // url: 'http://localhost:9999/test', //Endpoint
-                    url: 'http://112.124.201.59:9999/test', //Endpoint
+                    url: 'http://localhost:9999/test',
+                    // url: 'http://112.124.201.59:9999/test',
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
                         'X-Original-Header2': 'header-value-2',
@@ -95,8 +69,8 @@ export default {
                 }
             
                 ajax.postAsync({
-                    url: 'http://112.124.201.59:9999/staging', //Endpoint
-                    // url: 'http://localhost:9999/staging', //Endpoint
+                    // url: 'http://112.124.201.59:9999/staging',
+                    url: 'http://localhost:9999/staging',
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
                         'X-Original-Header2': 'header-value-2',
@@ -128,8 +102,8 @@ export default {
                 }
             
                 ajax.postAsync({
-                    // url: 'http://localhost:9999/production', //Endpoint
-                    url: 'http://112.124.201.59:9999/production', //Endpoint
+                    url: 'http://localhost:9999/production',
+                    // url: 'http://112.124.201.59:9999/production',
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
                         'X-Original-Header2': 'header-value-2',

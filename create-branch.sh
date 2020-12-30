@@ -17,7 +17,7 @@ fulltime=`date +%Y%m%d%H%m%s`
 
 #你的本地分支名称，分支名就是用的就是创建分支的时间
 feature=$fulltime
-# echo $feature
+echo $feature
 
 # #删除目录,为新建目录做准备
 # rm -rf "${project}" 

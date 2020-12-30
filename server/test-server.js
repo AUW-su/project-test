@@ -40,7 +40,6 @@ const doShell = (cmd) => {
     })
 }
 app.get('/create', (req, res, next) => {
-    console.log('createcreate')
     res.status(200);
 
     let sh = path.resolve(__dirname, '../create-branch.sh');

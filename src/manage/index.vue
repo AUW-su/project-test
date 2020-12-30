@@ -32,8 +32,8 @@ export default {
                 }
             
                 ajax.postAsync({
-                    url: 'http://localhost:9999/test',
-                    // url: 'http://112.124.201.59:9999/test',
+                    // url: 'http://localhost:9999/test',
+                    url: 'http://112.124.201.59:9999/test',
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
                         'X-Original-Header2': 'header-value-2',
@@ -69,8 +69,8 @@ export default {
                 }
             
                 ajax.postAsync({
-                    // url: 'http://112.124.201.59:9999/staging',
-                    url: 'http://localhost:9999/staging',
+                    url: 'http://112.124.201.59:9999/staging',
+                    // url: 'http://localhost:9999/staging',
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
                         'X-Original-Header2': 'header-value-2',
@@ -102,8 +102,8 @@ export default {
                 }
             
                 ajax.postAsync({
-                    url: 'http://localhost:9999/production',
-                    // url: 'http://112.124.201.59:9999/production',
+                    // url: 'http://localhost:9999/production',
+                    url: 'http://112.124.201.59:9999/production',
                     headers: {
                         'X-Original-Header1': 'header-value-1', //Additional Headers
                         'X-Original-Header2': 'header-value-2',

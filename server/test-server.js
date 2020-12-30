@@ -7,7 +7,8 @@ const {execFile} = require('child_process');
 app.use(bodyParser.json());
  
 //Specify port
-var port = process.env.PORT || 9999;
+// var port = process.env.PORT || 9999;
+var port = 9999;
  
 //Allow CORS
 app.use((req, res, next) => {

@@ -46,21 +46,8 @@ app.get('/create', (req, res, next) => {
     let sh = path.resolve(__dirname, '../create-branch.sh');
 
     doShell(sh).then((result) => {
-        // 提取当前分支名
-        // console.log('1111')
-        // console.log(result)
-        // console.log(result.data)
-        // console.log(typeof result.data)
-        // let branchName = result.data.substring(0, 22);
-        // console.log(branchName)
-        // let re = JSON.stringify({
-        //     success: true,
-        //     branch_name: branchName,
-        // })
-        // res.send('hello')
         res.json(result);
     }).catch((err) => {
-        console.log('222')
         console.log(err)
         res.json({
             error: err

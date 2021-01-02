@@ -5,7 +5,7 @@
 
         <!-- <div class="text">1111</div> -->
         <div class="cont">
-            <div class="text">新年快乐22222～</div>
+            <div class="text">新年快乐～</div>
         </div>
     </div>
 </template>

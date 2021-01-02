@@ -3,9 +3,8 @@
         <div class="text">距离<span class="notice">分享结束</span>还有：</div> 
         <count-down :countDownTime="time"></count-down>
 
-        <!-- <div class="text">1111</div> -->
         <div class="cont">
-            <div class="text">新年快乐1234～</div>
+            <div class="text">新年快乐～5678</div>
         </div>
     </div>
 </template>

@@ -34,7 +34,8 @@ export default {
                 };
 
                 ws.onmessage = (evt) => {
-                    console.log( "Client received Message: " + evt.data);
+                    console.log( "Client received Message: ");
+                    console.log(evt.data)
                     ws.close();
                 };
 
@@ -56,7 +57,8 @@ export default {
                 };
 
                 ws.onmessage = (evt) => {
-                    console.log( "Client received Message: " + evt.data);
+                    console.log( "Client received Message: ");
+                    console.log(evt.data)
                     ws.close();
                 };
 
@@ -78,7 +80,8 @@ export default {
                 };
 
                 ws.onmessage = (evt) => {
-                    console.log( "Client received Message: " + evt.data);
+                    console.log( "Client received Message: ");
+                    console.log(evt.data)
                     ws.close();
                 };
 

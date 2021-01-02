@@ -24,7 +24,6 @@ app.ws('/staging', (ws, req) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../staging.sh');
-    ws.send('stagingstagingstagingstaging')
     execFile(sh, (err, stdout, stderr) => {
         if (err) {
             ws.send(stderr)
@@ -38,7 +37,6 @@ app.ws('/production', (ws, req) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../production.sh');
-    ws.send('productionproductionproductionproduction')
 
     execFile(sh, (err, stdout, stderr) => {
         if (err) {

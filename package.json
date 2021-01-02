@@ -28,9 +28,11 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "vue": "^2.6.12",
     "ajax-client": "^1.4.4",
     "child_process": "^1.0.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "vue": "^2.6.12",
+    "ws": "^7.4.2"
   }
 }

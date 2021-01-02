@@ -9,7 +9,8 @@ module.exports = {
     // entry: "./src/index.js", // string | object | array
     entry: {
         home: './src/home/home.js',
-        manage: './src/manage/manage.js'
+        manage: './src/manage/manage.js',
+        manage2: './src/manage2/manage2.js'
     },
     // 默认为 ./src
     // 这里应用程序开始执行

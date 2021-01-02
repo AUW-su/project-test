@@ -30,7 +30,7 @@ export default {
 
                 ws.onopen = (evt) => { 
                     console.log("Connection open ..."); 
-                    ws.send("正在创建新分支");
+                    ws.send("正在创建新分支～");
                 };
 
                 ws.onmessage = (evt) => {
@@ -53,7 +53,7 @@ export default {
 
                 ws.onopen = (evt) => { 
                     console.log("Connection open ..."); 
-                    ws.send("正在预发布");
+                    ws.send("正在预发布～");
                 };
 
                 ws.onmessage = (evt) => {
@@ -76,7 +76,7 @@ export default {
 
                 ws.onopen = (evt) => { 
                     console.log("Connection open ..."); 
-                    ws.send("正在正式发布");
+                    ws.send("正在正式发布～");
                 };
 
                 ws.onmessage = (evt) => {

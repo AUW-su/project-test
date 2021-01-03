@@ -1,11 +1,29 @@
 <template>
     <div class="wrapper">
-        <div class="creat-branch">
+        <div class="build-btns">
             <div class="btn" @click="createBranch">创建git分支</div>
+            <div class="btn btn-1" @click="staging">预发布</div>
+            <div class="btn btn-1" @click="production">正式发布</div>
+        </div>
+        <div class="cache-config">
+            <div class="config">
+                <div class="time-text">设置强缓存时间：</div> 
+                <input  placeholder="请输入时间/秒" class="input" v-model="cache1"/>
+                <div class="time-btn">提交</div>
+            </div>
+            <div class="config">
+                <div class="time-text">设置cdn缓存时间：</div> 
+                <input  placeholder="请输入时间/秒" class="input" v-model="cache2"/>
+                <div class="time-btn">提交</div>
+            </div>
+            <div class="config">
+                <div class="time-text">设置协商缓存时间：</div> 
+                <input  placeholder="请输入时间/秒" class="input" v-model="cache3"/>
+                <div class="time-btn">提交</div>
+            </div>
         </div>
         
-        <div class="btn btn-1" @click="staging">预发布</div>
-        <div class="btn btn-1" @click="production">正式发布</div>
+        
     </div>
 </template>
 <script>
@@ -18,6 +36,11 @@ export default {
             ableCreateBranch: true,
             ableStaging: true,
             ableProduction: true,
+            cache1: '', // 强缓存时间
+            cache2: '', // cdn缓存时间
+            cache3: '', // 协商缓存时间
+            
+
         }
     },
     methods: {
@@ -97,11 +120,16 @@ export default {
 <style>
 .wrapper {
     padding: 20px;
+    font-size: 24px;
+    line-height: 30px;
+    color: #353535;
 }
-.creat-branch {
+.build-btns {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #5f5f5f;
 }
 .btn {
     width: 200px;
@@ -113,9 +141,35 @@ export default {
     border-radius: 12px;
 }
 .btn-1 {
-    margin-top: 20px;
-}
-.branch {
     margin-left: 20px;
+}
+.cache-config {
+    margin-top: 20px;
+    border-bottom: 1px solid #5f5f5f;
+}
+.config {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+.time-text {
+    width: 218px;
+}
+.input {
+    margin-right: 8px;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    /* border-radius: 4px; */
+}
+.time-btn {
+    width: 80px;
+    font-size: 24px;
+    line-height: 40px;
+    color: #353535;
+    text-align: center;
+    border: 1px solid #353535;
+    border-radius: 12px;
 }
 </style>

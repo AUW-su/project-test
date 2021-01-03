@@ -21,20 +21,4 @@ export default {
     }
 }
 </script>
-<style>
-.wrapper {
-    padding: 20px;
-}
-.text {
-    margin-bottom: 16px;
-    font-size: 22px;
-    color: #353535;
-    line-height: 28px;
-}
-.notice {
-    color: #e31436;
-}
-.cont {
-    margin-top: 20px;
-}
-</style>
+<style src="./index.css"></style>

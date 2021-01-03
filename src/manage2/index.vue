@@ -9,7 +9,7 @@
             <div class="config">
                 <div class="time-text">设置强缓存时间：</div> 
                 <input  placeholder="请输入时间/秒" class="input" v-model="cache1"/>
-                <div class="time-btn">提交</div>
+                <div class="time-btn" @click="setCacheTime1">提交</div>
             </div>
             <div class="config">
                 <div class="time-text">设置cdn缓存时间：</div> 
@@ -39,8 +39,9 @@ export default {
             cache1: '', // 强缓存时间
             cache2: '', // cdn缓存时间
             cache3: '', // 协商缓存时间
-            
-
+            ableCache1: true,
+            ableCache2: true,
+            ableCache3: true,
         }
     },
     methods: {
@@ -114,6 +115,39 @@ export default {
                 };      
             }
         },
+        setCacheTime1() {
+            console.log('setCacheTime1')
+
+            if (this.ableCache1) {
+                this.ableCache1 = false;
+                const ajax = new AjaxClient();
+                const data = {
+                    time: this.cache1 || 0,
+                }
+            
+                ajax.postAsync({
+                    // url: 'http://112.124.201.59:9080/cache1',
+                    url: 'http://localhost:9080/cache1',
+                    headers: {
+                        'X-Original-Header1': 'header-value-1',
+                        'X-Original-Header2': 'header-value-2',
+                    },
+                    contentType: 'application/json; charset = UTF-8',
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    success: response => {
+                        this.ableCache1 = true;
+                        console.log('success')
+                        console.log(response);
+                    },
+                    error: e => {
+                        this.ableCache1 = true;
+                        console.log('error')
+                        console.error(e);
+                    },
+                });
+            }
+        }
     }
 }
 </script>

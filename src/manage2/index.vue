@@ -126,8 +126,8 @@ export default {
                 }
             
                 ajax.postAsync({
-                    // url: 'http://112.124.201.59:9080/cache1',
-                    url: 'http://localhost:9080/cache1',
+                    // url: 'http://112.124.201.59:10000/cache1',
+                    url: 'http://localhost:10000/cache1',
                     headers: {
                         'X-Original-Header1': 'header-value-1',
                         'X-Original-Header2': 'header-value-2',

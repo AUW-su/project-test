@@ -1,13 +1,16 @@
+const path = require("path")
 const express = require('express');
 const app = express();
 const expressWs = require('express-ws')(app);
-const port = 10000;
-
-const path = require("path")
-const {execFile} = require('child_process');
 
 const bodyParser = require('body-parser');
+const {execFile} = require('child_process');
+
 app.use(bodyParser.json());
+
+const port = 10000;
+
+
 
 //Allow CORS
 app.use((req, res, next) => {

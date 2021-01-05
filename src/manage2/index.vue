@@ -121,8 +121,11 @@ export default {
             if (this.ableCache1) {
                 this.ableCache1 = false;
                 const ajax = new AjaxClient();
+                // const data = {
+                //     time: this.cache1 || 0,
+                // }
                 const data = {
-                    time: this.cache1 || 0,
+                    message: "hello"
                 }
             
                 ajax.postAsync({

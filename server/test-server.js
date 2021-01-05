@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const {execFile} = require('child_process');
-
+// const redis = require("redis");
+// const client = redis.createClient(6379, '127.0.0.1');
+ 
 app.use(bodyParser.json());
  
 var port = 9999;
@@ -90,6 +92,35 @@ app.post('/production', bodyParser.json(), (req, res, next) => {
             error: err
         });
     });
+});
+app.post('/cache1', bodyParser.json(), (req, res, next) => {
+    res.status(200);
+    const data = req.body;
+    if (data) {
+        // client.on("error", (error) => {
+        //     console.error(error);
+        // });
+           
+        // client.set("color", "red", redis.print);
+        // client.get("color", (err, value) => {
+        //     if (err) {
+        //         throw err;
+        //     }
+        //     console.log('1111111111')
+        //     console.log('got:', value);
+        //     // client.quit();
+        // });
+
+        let message = "Hi,there! You say " + data.time;
+        res.json({
+            output: message
+        });
+    } else {
+        let message = 'error:message not found.';
+        res.json({
+            error: message
+        });
+    }
 });
 app.post('/api', bodyParser.json(), (req, res, next) => {
     res.status(200);

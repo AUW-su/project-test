@@ -109,6 +109,7 @@ export default {
         },
         production() {
             console.log('production')
+            
             if (this.ableProduction) {
                 this.ableProduction = false;
                 const ajax = new AjaxClient();
@@ -142,29 +143,46 @@ export default {
         setCacheTime1() {
             console.log('setCacheTime1')
 
-            const ajax = new AjaxClient();
-            const data = {
-                time: 60
-            };
-        
-            ajax.postAsync({
-                url: 'http://localhost:9999/cache1',
-                headers: {
-                    'X-Original-Header1': 'header-value-1', //Additional Headers
-                    'X-Original-Header2': 'header-value-2',
-                },
-                contentType: 'application/json; charset = UTF-8', //content-type of sending data
-                data: JSON.stringify(data), //text data
-                dataType: 'json', //data type to parse when receiving response from server
-                success: response => {
-                    console.log('success')
-                    console.log(response);
-                },
-                error: e => {
-                    console.log('error')
-                    console.error(e);
-                },
-            });
+            if (!this.cache1) {
+                window.alert('请填入强缓存时间～');
+                return;
+            }
+
+            if (this.ableCache1) {
+                this.ableCache1 = false;
+                const ajax = new AjaxClient();
+                const data = {
+                    time: this.cache1,
+                };
+            
+                ajax.postAsync({
+                    url: 'http://localhost:9999/cache1',
+                    headers: {
+                        'X-Original-Header1': 'header-value-1', //Additional Headers
+                        'X-Original-Header2': 'header-value-2',
+                    },
+                    contentType: 'application/json; charset = UTF-8', //content-type of sending data
+                    data: JSON.stringify(data), //text data
+                    dataType: 'json', //data type to parse when receiving response from server
+                    success: response => {
+                        console.log(response);
+
+                        if (response.success) {
+                            window.alert('成功~');
+                        } else {
+                            window.alert('失败~');
+                        }
+
+                        this.ableCache1 = true;
+                    },
+                    error: e => {
+                        console.log('error')
+                        console.error(e);
+
+                        this.ableCache1 = true;
+                    },
+                });
+            }
         }
     }
 }

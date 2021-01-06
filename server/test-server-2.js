@@ -28,19 +28,16 @@ app.ws('/create', (ws, req) => {
     const ls = spawn(sh);
 
     ls.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
         ws.send(`${data}`)
     });
     
     ls.stderr.on('data', (data) => {
-        console.error(`stderr: ${data}`);
         ws.send(`${data}`)
     });
     
     ls.on('close', (code) => {
-        console.log(`child process exited with code ${code}`);
         ws.send(`child process exited with code ${code}`)
-        ws.send('create end')
+        ws.send('create end');
     });
 
     // execFile(sh, (err, stdout, stderr) => {

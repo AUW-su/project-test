@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const url = require("url");
 const path = require("path")
-// const redis = require("redis");
+const redis = require("redis");
 
 const port = 9080;
 let partFilePath = '';
@@ -12,7 +12,7 @@ let maxAge = 120;
 let useWeakcCache = 1;
 
 
-// const client = redis.createClient(6379, '127.0.0.1');
+const client = redis.createClient(6379, '127.0.0.1');
 
 // 获取后缀名
 const getExt = (extName) => {
@@ -59,24 +59,24 @@ server.on('request', (req, res) => {
     let stat = fs.statSync(fullFilePath);
 
     // redis 获取相应值
-    // client.on("error", (error) => {
-    //     console.error(error);
-    // });
-    // client.get("max-age", (err, value) => {
-    //     if (err) {
-    //         throw err;
-    //     }
-    //     maxAge = +value;
-    //     console.log('maxAge:', maxAge);
-    // });
-    // client.get("use-weak-cache", (err, value) => {
-    //     if (err) {
-    //         throw err;
-    //     }
-    //     useWeakcCache = +value;
-    //     console.log('useWeakcCache:', useWeakcCache);
-    //     // client.quit();
-    // });
+    client.on("error", (error) => {
+        console.error(error);
+    });
+    client.get("max-age", (err, value) => {
+        if (err) {
+            throw err;
+        }
+        maxAge = +value;
+        console.log('maxAge:', maxAge);
+    });
+    client.get("use-weak-cache", (err, value) => {
+        if (err) {
+            throw err;
+        }
+        useWeakcCache = +value;
+        console.log('useWeakcCache:', useWeakcCache);
+        // client.quit();
+    });
 
 	fs.readFile(fullFilePath, (err, data) => {
 		if (err) { 

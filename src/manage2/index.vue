@@ -58,9 +58,11 @@ export default {
                 };
 
                 ws.onmessage = (evt) => {
-                    console.log( "Client received Message: ");
                     console.log(evt.data)
-                    ws.close();
+                    
+                    if (evt.data === 'staging end') {
+                        ws.close();
+                    }
                 };
 
                 ws.onclose = (evt) => {
@@ -81,9 +83,11 @@ export default {
                 };
 
                 ws.onmessage = (evt) => {
-                    console.log( "Client received Message: ");
                     console.log(evt.data)
-                    ws.close();
+                    
+                    if (evt.data === 'production end') {
+                        ws.close();
+                    }
                 };
 
                 ws.onclose = (evt) => {

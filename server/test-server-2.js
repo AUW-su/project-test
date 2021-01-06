@@ -53,12 +53,43 @@ app.ws('/staging', (ws, req) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../staging.sh');
+
+    const ls = spawn(sh);
+
+    ls.stdout.on('data', (data) => {
+        ws.send(`${data}`)
+    });
+    
+    ls.stderr.on('data', (data) => {
+        ws.send(`${data}`)
+    });
+    
+    ls.on('close', (code) => {
+        ws.send(`child process exited with code ${code}`)
+        ws.send('staging end');
+    });
+
 })
 app.ws('/production', (ws, req) => {
     ws.on('message', (message) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../production.sh');
+
+    const ls = spawn(sh);
+
+    ls.stdout.on('data', (data) => {
+        ws.send(`${data}`)
+    });
+    
+    ls.stderr.on('data', (data) => {
+        ws.send(`${data}`)
+    });
+    
+    ls.on('close', (code) => {
+        ws.send(`child process exited with code ${code}`)
+        ws.send('production end');
+    });
 })
 
 app.listen(port);

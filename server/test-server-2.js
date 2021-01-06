@@ -39,7 +39,7 @@ app.ws('/create', (ws, req) => {
     
     ls.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
-        ws.send(data)
+        ws.send(`child process exited with code ${code}`)
         ws.send('create end')
     });
 

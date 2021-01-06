@@ -29,12 +29,12 @@ app.ws('/create', (ws, req) => {
 
     ls.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
-        ws.send(data)
+        ws.send(`${data}`)
     });
     
     ls.stderr.on('data', (data) => {
         console.error(`stderr: ${data}`);
-        ws.send(data)
+        ws.send(`${data}`)
     });
     
     ls.on('close', (code) => {

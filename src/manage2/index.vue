@@ -29,10 +29,11 @@ export default {
 
                 ws.onopen = (evt) => { 
                     console.log("Connection open ..."); 
-                    ws.send("正在创建新分支～");
+                    ws.send("创建新分支ing～");
                 };
 
                 ws.onmessage = (evt) => {
+                    console.log( "*********");
                     console.log( "Client received Message: ");
                     console.log(evt.data)
                     ws.close();
@@ -52,7 +53,7 @@ export default {
 
                 ws.onopen = (evt) => { 
                     console.log("Connection open ..."); 
-                    ws.send("正在预发布～");
+                    ws.send("预发布ing～");
                 };
 
                 ws.onmessage = (evt) => {
@@ -75,7 +76,7 @@ export default {
 
                 ws.onopen = (evt) => { 
                     console.log("Connection open ..."); 
-                    ws.send("正在正式发布～");
+                    ws.send("正式发布ing～");
                 };
 
                 ws.onmessage = (evt) => {

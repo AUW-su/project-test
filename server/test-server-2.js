@@ -19,7 +19,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// websocket start
 app.ws('/create', (ws, req) => {
     ws.on('message', (message) => {
         console.log('server received: %s', message);
@@ -30,14 +29,17 @@ app.ws('/create', (ws, req) => {
 
     ls.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
+        ws.send(data)
     });
     
     ls.stderr.on('data', (data) => {
         console.error(`stderr: ${data}`);
+        ws.send(data)
     });
     
     ls.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
+        ws.send(data)
     });
 
     // execFile(sh, (err, stdout, stderr) => {
@@ -53,13 +55,13 @@ app.ws('/staging', (ws, req) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../staging.sh');
-    execFile(sh, (err, stdout, stderr) => {
-        if (err) {
-            ws.send(stderr)
-        } else {
-            ws.send(stdout)
-        }
-    });
+    // execFile(sh, (err, stdout, stderr) => {
+    //     if (err) {
+    //         ws.send(stderr)
+    //     } else {
+    //         ws.send(stdout)
+    //     }
+    // });
 })
 app.ws('/production', (ws, req) => {
     ws.on('message', (message) => {
@@ -67,22 +69,14 @@ app.ws('/production', (ws, req) => {
     });
     let sh = path.resolve(__dirname, '../production.sh');
 
-    execFile(sh, (err, stdout, stderr) => {
-        if (err) {
-            ws.send(stderr)
-        } else {
-            ws.send(stdout)
-        }
-    });
+    // execFile(sh, (err, stdout, stderr) => {
+    //     if (err) {
+    //         ws.send(stderr)
+    //     } else {
+    //         ws.send(stdout)
+    //     }
+    // });
 })
-// websocket end
-
-// cache start
-app.post('/cache1', bodyParser.json(), (req, res, next) => {
-    res.status(200);
-    res.send('hello world');
-});
-// cache 
 
 app.listen(port);
 console.log('Server started on port:' + port);

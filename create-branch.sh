@@ -8,27 +8,12 @@ dir=`pwd`
 #上一级目录
 path=$(dirname "$dir")
 
-# project="project"
-
-# #git clone 地址
-# gitcloneurl="https://github.com/AUW-su/project-test.git"
-
-
 fulltime=`date +%Y%m%d%H%m%s`
 # echo ${fulltime}
 
 #你的本地分支名称，分支名就是用的就是创建分支的时间
 feature=$fulltime
 echo $feature
-
-# #删除目录,为新建目录做准备
-# rm -rf "${project}" 
-
-# mkdir "$dir"/"${project}"
-
-# cd "$dir"/"${project}"
-
-# git clone "$gitcloneurl"
 
 git checkout master
 

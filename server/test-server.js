@@ -4,7 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const {execFile} = require('child_process');
 const redis = require("redis");
- 
+const client = redis.createClient(6379, '127.0.0.1');
+
 app.use(bodyParser.json());
  
 var port = 9999;
@@ -83,7 +84,6 @@ app.post('/staging', bodyParser.json(), (req, res, next) => {
 app.post('/production', bodyParser.json(), (req, res, next) => {
     res.status(200);
     let sh = path.resolve(__dirname, '../production.sh');
-    // let sh = path.resolve(__dirname, '../test.sh');
     doShell(sh).then((res1) => {
         res.json(res1);
     }).catch((err) => {
@@ -95,23 +95,14 @@ app.post('/production', bodyParser.json(), (req, res, next) => {
 app.post('/cache1', bodyParser.json(), (req, res, next) => {
     res.status(200);
     const data = req.body;
-    if (data && data.time) {
-        const client = redis.createClient(6379, '127.0.0.1');
+    if (data) {
 
         client.on("error", (error) => {
             console.error(error);
         });
            
         client.set("max-age", data.time, redis.print);
-
-        // client.get("max-age", (err, value) => {
-        //     if (err) {
-        //         throw err;
-        //     }
-        //     console.log('1111111111')
-        //     console.log('got:', value);
-        //     client.quit();
-        // });
+        client.expire('max-age', 30 * 24 * 60 * 60); // 设置过期时间
 
         res.json({
             success: true,
@@ -123,6 +114,30 @@ app.post('/cache1', bodyParser.json(), (req, res, next) => {
         });
     }
 });
+
+app.post('/weak-cache', bodyParser.json(), (req, res, next) => {
+    res.status(200);
+    const data = req.body;
+    if (data) {
+
+        client.on("error", (error) => {
+            console.error(error);
+        });
+           
+        client.set("use-weak-cache", data.useWeakcCache, redis.print);
+        client.expire('use-weak-cache', 30 * 24 * 60 * 60); // 设置过期时间
+
+        res.json({
+            success: true,
+        });
+    } else {
+        res.json({
+            success: false,
+            message: '协商缓存时间设置有误'
+        });
+    }
+});
+
 app.post('/api', bodyParser.json(), (req, res, next) => {
     res.status(200);
     const data = req.body;

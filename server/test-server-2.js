@@ -4,7 +4,7 @@ const app = express();
 const expressWs = require('express-ws')(app);
 
 const bodyParser = require('body-parser');
-const {execFile} = require('child_process');
+const {execFile, spawn} = require('child_process');
 
 app.use(bodyParser.json());
 
@@ -25,13 +25,28 @@ app.ws('/create', (ws, req) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../create-branch.sh');
-    execFile(sh, (err, stdout, stderr) => {
-        if (err) {
-            ws.send(stderr)
-        } else {
-            ws.send(stdout)
-        }
+
+    const ls = spawn(sh);
+
+    ls.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
     });
+    
+    ls.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+    });
+    
+    ls.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+    });
+
+    // execFile(sh, (err, stdout, stderr) => {
+    //     if (err) {
+    //         ws.send(stderr)
+    //     } else {
+    //         ws.send(stdout)
+    //     }
+    // });
 })
 app.ws('/staging', (ws, req) => {
     ws.on('message', (message) => {

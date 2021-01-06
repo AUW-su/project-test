@@ -21,7 +21,7 @@ export default {
     },
     methods: {
         createBranch() {
-            console.log('createBranch')
+            console.log('websocket createBranch')
         
             if (this.ableCreateBranch) {
                 this.ableCreateBranch = false;
@@ -45,7 +45,7 @@ export default {
             }
         },
         staging() {
-            console.log('staging')
+            console.log('websocket staging')
             if (this.ableStaging) {
                 this.ableStaging = false;
                 var ws = new WebSocket("ws://localhost:10000/staging");
@@ -68,7 +68,7 @@ export default {
             }
         },
         production() {
-            console.log('production')
+            console.log('websocket production')
             if (this.ableProduction) {
                 this.ableProduction = false;
                  var ws = new WebSocket("ws://localhost:10000/production");

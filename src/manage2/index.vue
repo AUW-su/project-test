@@ -33,10 +33,11 @@ export default {
                 };
 
                 ws.onmessage = (evt) => {
-                    console.log( "*********");
-                    console.log( "Client received Message: ");
+                    console.log( "Client received Message: *********");
                     console.log(evt.data)
-                    ws.close();
+                    if (evt.data === 'create end') {
+                        ws.close();
+                    }
                 };
 
                 ws.onclose = (evt) => {

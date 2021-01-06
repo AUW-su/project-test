@@ -56,27 +56,12 @@ app.ws('/staging', (ws, req) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../staging.sh');
-    // execFile(sh, (err, stdout, stderr) => {
-    //     if (err) {
-    //         ws.send(stderr)
-    //     } else {
-    //         ws.send(stdout)
-    //     }
-    // });
 })
 app.ws('/production', (ws, req) => {
     ws.on('message', (message) => {
         console.log('server received: %s', message);
     });
     let sh = path.resolve(__dirname, '../production.sh');
-
-    // execFile(sh, (err, stdout, stderr) => {
-    //     if (err) {
-    //         ws.send(stderr)
-    //     } else {
-    //         ws.send(stdout)
-    //     }
-    // });
 })
 
 app.listen(port);

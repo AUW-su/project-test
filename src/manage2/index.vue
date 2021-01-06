@@ -28,6 +28,7 @@ export default {
                 var ws = new WebSocket("ws://localhost:10000/create");
 
                 ws.onopen = (evt) => { 
+                    console.log('创建新分支ing~~~~~~~~~~~~~~~~')
                     console.log("Connection open ..."); 
                     ws.send("创建新分支ing～");
                 };
@@ -53,6 +54,8 @@ export default {
                 var ws = new WebSocket("ws://localhost:10000/staging");
 
                 ws.onopen = (evt) => { 
+                    console.log('预发布ing~~~~~~~~~~~~~~~~')
+
                     console.log("Connection open ..."); 
                     ws.send("预发布ing～");
                 };
@@ -78,6 +81,8 @@ export default {
                  var ws = new WebSocket("ws://localhost:10000/production");
 
                 ws.onopen = (evt) => { 
+                    console.log('正式发布ing~~~~~~~~~~~~~~~~')
+
                     console.log("Connection open ..."); 
                     ws.send("正式发布ing～");
                 };

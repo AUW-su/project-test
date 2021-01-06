@@ -68,14 +68,12 @@ server.on('request', (req, res) => {
         }
         maxAge = +value;
         console.log('maxAge:', maxAge);
-        console.log('got:', value);
     });
     client.get("use-weak-cache", (err, value) => {
         if (err) {
             throw err;
         }
         useWeakcCache = +value;
-        console.log('got:', value);
         console.log('useWeakcCache:', useWeakcCache);
         // client.quit();
     });
@@ -93,15 +91,11 @@ server.on('request', (req, res) => {
             // 根据useWeakcCache的值来判断是否要使用协商缓存
             if (useWeakcCache) {
                 // 判断请求头的文件修改时间是否等于服务端的文件修改时间
-                if (req.headers['If-Modified-Since'] === stat.mtime.toUTCString() || (req.headers['If-None-Match'] === Etag)) { 
+                if (req.headers['if-modified-since'] === stat.mtime.toUTCString() || (req.headers['if-none-match'] === Etag)) { 
                     // mtime为文件内容改变的时间戳
                     statusCode = 304;
                 }
             }
-            console.log('************')
-
-            console.log(maxAge)
-            console.log(useWeakcCache)
             
             // 设置请求头
             res.writeHead(statusCode, {

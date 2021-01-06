@@ -37,18 +37,18 @@ server.on('request', (req, res) => {
     }
 
     // 实践1 + 实践2中的静态资源缓存
-    // if (pathName == '/dist/manage.js') {
-    //     partFilePath = path.resolve(__dirname, '../');
-    // } else {
-    //     partFilePath =  path.resolve(__dirname, '../src/manage/')
-    // }
-    
-    // 实践2中的websocket
-    if (pathName == '/dist/manage2.js') {
+    if (pathName == '/dist/manage.js') {
         partFilePath = path.resolve(__dirname, '../');
     } else {
-        partFilePath =  path.resolve(__dirname, '../src/manage2/')
+        partFilePath =  path.resolve(__dirname, '../src/manage/')
     }
+    
+    // 实践2中的websocket
+    // if (pathName == '/dist/manage2.js') {
+    //     partFilePath = path.resolve(__dirname, '../');
+    // } else {
+    //     partFilePath =  path.resolve(__dirname, '../src/manage2/')
+    // }
     
 	//获取文件后缀名
     let extName = path.extname(pathName);

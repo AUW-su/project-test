@@ -88,6 +88,7 @@ server.on('request', (req, res) => {
                 // 获取对应后缀的文件类型
                 let ext = getExt(extName);
                 let stat = fs.statSync(fullFilePath);
+                // ETag 一般由 last_modified 与 content_length 组成
                 let Etag = `${data.length.toString(16)}${stat.mtime.toString(16)}`;
                 
                 // 根据useWeakcCache的值来判断是否要使用协商缓存

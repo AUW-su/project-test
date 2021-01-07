@@ -4,7 +4,7 @@
         <count-down :countDownTime="time"></count-down>
 
         <div class="cont">
-            <div class="text">新年快乐～1234</div>
+            <div class="text">新年快乐～1234~</div>
         </div>
     </div>
 </template>

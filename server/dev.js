@@ -98,7 +98,7 @@ server.on('request', (req, res) => {
                         // 文件未变更，缓存还可以用，返回新的过期时间，不用返回响应体，浏览器会去用缓存的内容
                         res.writeHead(304, {
                             'Cache-Control': `max-age=${maxAge}, public`,
-                            'Last-Modified': stat.mtime.toUTCString(),
+                            'Last-Modified': stat.mtime.toUTCString(), // 资源的最近修改时间 （GMT标准格式）
                             'Etag': Etag,
                         });
                         res.end();

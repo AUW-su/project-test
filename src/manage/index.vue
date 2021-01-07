@@ -11,11 +11,11 @@
                 <input  placeholder="请输入时间 /秒" class="input" v-model="cache1"/>
                 <div class="time-btn" @click="setCacheTime1">提交</div>
             </div>
-            <div class="config">
+            <!-- <div class="config">
                 <div class="time-text">设置CDN缓存时间：</div> 
                 <input  placeholder="请输入时间 /秒" class="input" v-model="cache2"/>
                 <div class="time-btn">提交</div>
-            </div>
+            </div> -->
             <div class="use-weak-cache-btn" @click="setWeakCache(1)">使用协商缓存</div>
         </div>
         <div class="cache-config cache-config-1">

@@ -3,8 +3,8 @@ const fs = require("fs");
 const url = require("url");
 const path = require("path")
 
-const redis = require("redis");
-const client = redis.createClient(6379, '127.0.0.1');
+// const redis = require("redis");
+// const client = redis.createClient(6379, '127.0.0.1');
 
 const port = 9082;
 let partFilePath = '';
@@ -52,23 +52,23 @@ server.on('request', (req, res) => {
     fullFilePath = partFilePath + pathName;
 
     // redis 获取相应值
-    client.on("error", (error) => {
-        console.error(error);
-    });
-    client.get("max-age", (err, value) => {
-        if (err) {
-            throw err;
-        }
-        maxAge = +value;
-        console.log('maxAge:', maxAge);
-    });
-    client.get("use-weak-cache", (err, value) => {
-        if (err) {
-            throw err;
-        }
-        useWeakcCache = +value;
-        console.log('useWeakcCache:', useWeakcCache);
-    });
+    // client.on("error", (error) => {
+    //     console.error(error);
+    // });
+    // client.get("max-age", (err, value) => {
+    //     if (err) {
+    //         throw err;
+    //     }
+    //     maxAge = +value;
+    //     console.log('maxAge:', maxAge);
+    // });
+    // client.get("use-weak-cache", (err, value) => {
+    //     if (err) {
+    //         throw err;
+    //     }
+    //     useWeakcCache = +value;
+    //     console.log('useWeakcCache:', useWeakcCache);
+    // });
 
 	fs.readFile(fullFilePath, (err, data) => {
 		if (err) { 

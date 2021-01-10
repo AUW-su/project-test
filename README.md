@@ -1,21 +1,22 @@
-### 1、实践内容
-（1）申请一台阿里云服务器（centos7）；
+## 集群搭建+发布流程
 
-（2）搭建好nginx/nodejs环境；
+（1）申请一台阿里云服务器（centos7），可以选用阿里云轻量应用服务器
 
-（3）通过nginx做流量分发，分发到四个nodejs服务（以不同的目录区分），分别是：
+（2）在服务器上搭建好nginx/nodejs环境，可以直接在阿里云搜索安装教程
 
-    80端口：正式线上服务； http://test2.xiaohuangren.top/
+（3）通过nginx做流量分发，分发到四个nodejs服务，分别是：
 
-    81端口：预发服务； http://test2.xiaohuangren.top/    document.cookie=“project=myproject”
+    线上页面 http://test2.xiaohuangren.top/ 由9080端口提供服务
 
-    82端口：本地服务； http://test2-dev.xiaohuangren.top/
+    预发页面 http://test2.xiaohuangren.top/ 由9081端口提供服务，跟线上页面的区别在于cookie的命中
 
-    83端口：一个做预发/正式发布的管理平台；http://test2-manage.xiaohuangren.top/
+    本地页面 http://test2-dev.xiaohuangren.top/ 由9082端口提供服务
 
-    // 备注：
-    // 80、81、82的服务运行的是一个h5页面（包含html/css/js）；
-    // 83的服务是一个pc页面，有三个按钮（创建git分支/预发布/正式发布），创建或发布成功后把当前日志打印出来；
+    管理页面，管理分支创建/预发发布/正式发布 http://test2-manage.xiaohuangren.top/ 由9083端口提供服务
+    
+    备注：
+    1）9080、9081、9082的服务运行的是一个h5页面（包含html/css/js），用不同的文件夹来存放 本地/预发/线上页面 的内容
+    2）9083的服务是一个pc页面，有三个按钮（创建git分支/预发布/正式发布），创建或发布成功后把当前日志打印出来；
 
 （4）预发服务需要配置cookie（可以自定义key和value）才能访问，在nginx里做配置；
 
@@ -25,8 +26,10 @@
 
 （7）用shell脚本完成自动化发布流程，分别为：
 
-    创建git分支：git pull（暂时不考虑解决冲突的问题） → git checkout -b [分支号]
+    创建git分支脚本：git pull（暂时不考虑解决冲突的问题） → git checkout -b [分支号]
 
-    预发布（81端口）：git pull → npm版本设置 → npm包删除 → npm install → npm run build → 拷贝文件  重启node服务（81端口）
+    预发布脚本：git pull → npm版本设置 → npm包删除 → npm install → npm run build → 拷贝文件到预发文件夹下  重启node服务（9081端口）
 
-    正式发布（80端口）：文件拷贝 →  重启node服务（81端口） → 合并git分支到master（暂时不考虑解决冲突的问题）
+    正式发布脚本：文件拷贝到正式文件夹下 →  重启node服务（9080端口） → 合并git分支到master（暂时不考虑解决冲突的问题）
+
+## 静态资源缓存+websocket

@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# echo 'hello world'
-
 # 获取当前执行脚本路径
 dir=`pwd`
 
@@ -9,7 +7,6 @@ dir=`pwd`
 path=$(dirname "$dir")
 
 fulltime=`date +%Y%m%d%H%m%s`
-# echo ${fulltime}
 
 #你的本地分支名称，分支名就是用的就是创建分支的时间
 feature=$fulltime

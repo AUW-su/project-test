@@ -4,6 +4,8 @@ const app = express();
 const expressWs = require('express-ws')(app);
 
 const bodyParser = require('body-parser');
+// 实践1中用的是http协议，实践2中用的是websocket协议
+// spawn可以将脚本的输出内容实时输出，然后用websocket将输出实时返回给客户端（浏览器）
 const {execFile, spawn} = require('child_process');
 
 app.use(bodyParser.json());

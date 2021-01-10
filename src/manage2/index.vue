@@ -9,8 +9,6 @@
     </div>
 </template>
 <script>
-import {AjaxClient} from 'ajax-client'
-
 export default {
     data() {
         return {

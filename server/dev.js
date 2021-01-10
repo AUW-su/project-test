@@ -9,7 +9,6 @@ const client = redis.createClient(6379, '127.0.0.1');
 const port = 9082;
 let partFilePath = '';
 let fullFilePath = '';
-// let statusCode = 200;
 let maxAge = 120;
 let useWeakcCache = 1;
 
@@ -69,7 +68,6 @@ server.on('request', (req, res) => {
         }
         useWeakcCache = +value;
         console.log('useWeakcCache:', useWeakcCache);
-        // client.quit();
     });
 
 	fs.readFile(fullFilePath, (err, data) => {
@@ -123,13 +121,6 @@ server.on('request', (req, res) => {
                     res.write(data); 
                     res.end();
                 }
-
-                // res.writeHead(statusCode, {
-                //     "Content-Type": ext + "; charset=utf-8",
-                //     'Cache-Control': `max-age=${maxAge}, public`,
-                //     'Last-Modified': stat.mtime.toUTCString(),
-                //     'Etag': Etag,
-                // });
             }
 		}
 	});

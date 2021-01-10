@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# echo 'hello world'
 set -e
 
 # #获取当前执行脚本路径
@@ -19,7 +18,7 @@ echo $path2
 cp -R $path2/staging/project-test $path2/production/
 
 # #重启正式服务（9080）
-# pm2 reload production
+pm2 reload production
 
 echo $(date +"%Y-%m-%d %H:%M:%S") "正式发布完成" >> $path/test.log
 

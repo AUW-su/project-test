@@ -3,8 +3,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const {execFile} = require('child_process');
-const redis = require("redis");
-const client = redis.createClient(6379, '127.0.0.1');
+// const redis = require("redis");
+// const client = redis.createClient(6379, '127.0.0.1');
 
 app.use(bodyParser.json());
  
@@ -97,12 +97,12 @@ app.post('/cache1', bodyParser.json(), (req, res, next) => {
     const data = req.body;
     if (data) {
 
-        client.on("error", (error) => {
-            console.error(error);
-        });
+        // client.on("error", (error) => {
+        //     console.error(error);
+        // });
            
-        client.set("max-age", data.time, redis.print);
-        client.expire('max-age', 30 * 24 * 60 * 60); // 设置过期时间
+        // client.set("max-age", data.time, redis.print);
+        // client.expire('max-age', 30 * 24 * 60 * 60); // 设置过期时间
 
         res.json({
             success: true,
@@ -120,12 +120,12 @@ app.post('/weak-cache', bodyParser.json(), (req, res, next) => {
     const data = req.body;
     if (data) {
 
-        client.on("error", (error) => {
-            console.error(error);
-        });
+        // client.on("error", (error) => {
+        //     console.error(error);
+        // });
            
-        client.set("use-weak-cache", data.useWeakcCache, redis.print);
-        client.expire('use-weak-cache', 30 * 24 * 60 * 60); // 设置过期时间
+        // client.set("use-weak-cache", data.useWeakcCache, redis.print);
+        // client.expire('use-weak-cache', 30 * 24 * 60 * 60); // 设置过期时间
 
         res.json({
             success: true,

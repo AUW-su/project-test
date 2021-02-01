@@ -62,14 +62,13 @@ if [ -s "./${fileName}/.config" ]; then
         if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
             echo "没有可提交的内容";
         else
-            git add $path/dist
-            git add $path/test.log
+            git add package.json
+            git add package-lock.json
             git commit --no-verify -m "build.sh auto commit package.json & package-lock.json";
             git push
         fi
     fi
     done
-
 fi
 
 rm -rf "./${fileName}"

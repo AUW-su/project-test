@@ -49,12 +49,24 @@ if [ -s "./${fileName}/.config" ]; then
         echo $line
 
         IFS=":"
-
         array=($line)
 
         echo ${array[1]}
 
         npm install ${array[1]}  --registry https://registry.npm.taobao.org
+
+        GIT_STATUS=`git status`
+        echo ${GIT_STATUS};
+
+        # 判断时候有需要提交的文件的文件
+        if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
+            echo "没有可提交的内容";
+        else
+            git add $path/dist
+            git add $path/test.log
+            git commit --no-verify -m "auto commit package.json & package-lock.json";
+            git push
+        fi
     fi
     done
 

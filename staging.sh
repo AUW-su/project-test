@@ -60,7 +60,7 @@ if [ -s "./${fileName}/.config" ]; then
 
         # 判断时候有需要提交的文件的文件
         if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
-            echo "没有可提交的内容";
+            echo "自动更新依赖包版本 没有可提交的内容";
         else
             git add package.json
             git add package-lock.json

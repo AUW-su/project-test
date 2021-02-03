@@ -22,59 +22,6 @@ nvm install ${NODE_VERSION}
 NPM="nvm exec 10.15.0 npm"
 
 ${NPM} install --registry https://registry.npm.taobao.org
-
-########
-
-# 获取配置文件
-fileName="package-config-test"
-
-gitcloneurl="https://github.com/AUW-su/package-config-test.git"
-
-# rm -rf "./${fileName}"
-
-git clone "$gitcloneurl"
-
-#  chmod u+x *.sh
-
-# 判断配置文件是否有内容，在[   ]内要有空格
-if [ -s "./${fileName}/.config" ]; then
-
-    echo "文件有内容"
-
-    # 开始读配置文件
-    cat "./${fileName}/.config" | while read line
-
-    do
-    if [[ $line =~ "all" ]]; then
-        echo $line
-
-        IFS=":"
-        array=($line)
-
-        echo ${array[1]}
-
-        npm install ${array[1]}  --registry https://registry.npm.taobao.org
-
-        GIT_STATUS=`git status`
-        echo ${GIT_STATUS};
-
-        # 判断时候有需要提交的文件的文件
-        if [[ "${GIT_STATUS}" == *"nothing to commit"* ]]; then
-            echo "自动更新依赖包版本 没有可提交的内容";
-        else
-            git add package.json
-            git add package-lock.json
-            git commit --no-verify -m "build.sh auto commit package.json & package-lock.json";
-            git push
-        fi
-    fi
-    done
-fi
-
-rm -rf "./${fileName}"
-
-########
-
 # # ${NPM} run eslint
 ${NPM} run build
 

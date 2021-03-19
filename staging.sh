@@ -11,7 +11,7 @@ dir=`pwd`
 # #上一级目录
 path=$(dirname "$dir")
 
-rm -rf $path/node_modules
+# rm -rf $path/node_modules
 
 export NODE_VERSION=10.15.0
 # export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node

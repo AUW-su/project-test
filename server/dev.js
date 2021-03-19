@@ -9,8 +9,12 @@ const client = redis.createClient(6379, '127.0.0.1');
 const port = 9082;
 let partFilePath = '';
 let fullFilePath = '';
-let maxAge = 120;
-let useWeakcCache = 1;
+// let maxAge = 120;
+// let useWeakcCache = 1;
+
+// 不缓存
+let maxAge = 0;
+let useWeakcCache = 0;
 
 // 获取后缀名
 const getExt = (extName) => {
